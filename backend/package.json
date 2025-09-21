@@ -1,16 +1,11 @@
 {
-  "name": "backend",
+  "name": "slab-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo \"No build required\" && exit 0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0",
-    "mongoose": "^8.18.1"
+    "express": "^4.18.2",
+    "mongoose": "^7.6.0"
   }
 }

@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // Connect to MongoDB (local Minikube)
-const mongoURI = 'mongodb://admin:admin123@localhost:27017/slabai';
-mongoose.connect(mongoURI)
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://admin:admin123@mongodb:27017/slabdb?authSource=admin';
+mongoose.connect(MONGODB_URI)
   .then(() => console.log('✅ MongoDB Connected'))
   .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
