@@ -25,3 +25,8 @@ jobs:
           helm upgrade --install slab-ai helm/slab-ai -n slab-ai \
             --set image.repository=slab-backend \
             --set image.tag=prod
+
+      - name: Verify Deployment
+        run: |
+          kubectl rollout status deployment/slab-ai -n slab-ai --timeout=60s || \
+          (helm rollback slab-ai 0 && exit 1)
