@@ -1,0 +1,15 @@
+name: Build & Deploy
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t slab-backend:prod -f backend/Dockerfile.prod backend/
+      - name: Run tests
+        run: docker run --rm slab-backend:prod npm test
+      - name: Deploy to Minikube
+        run: |
+          echo "Deployment steps will go here"
+          # Add your helm upgrade commands

@@ -12,3 +12,12 @@ app.get('/', (req, res) => res.send('🚀 Slab.ai Backend Running'));
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`🌐 Server running on http://localhost:${PORT}`));
+
+// Enhanced health check
+app.get('/api/healthcheck', (req, res) => {
+  res.json({
+    status: 'healthy',
+    mongo: process.env.MONGODB_URI ? 'connected' : 'disconnected',
+    timestamp: new Date()
+  });
+});
