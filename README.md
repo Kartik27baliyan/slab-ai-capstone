@@ -66,3 +66,4 @@ kubectl logs -n slab-ai <pod-name> --previous
 
 📜 License
 MIT © 2023 [Kartik27baliyan]
+ 
