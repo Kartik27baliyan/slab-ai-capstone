@@ -1,9 +1,11 @@
-# Hide Terraform from language stats
-**/*.tf linguist-vendored
-**/*.tfvars linguist-vendored
-terraform/** linguist-vendored
+# Hide Terraform and template files
+*.tf linguist-vendored
+*.tfvars linguist-vendored
+*.tpl linguist-vendored
+terraform/* linguist-vendored
+helm/templates/* linguist-vendored
 
-# Highlight your core languages
-**/*.js linguist-language=JavaScript
-**/*.yaml linguist-language=YAML
-**/*.sh linguist-language=Shell
+# Force language classification
+*.js linguist-language=JavaScript
+*.yaml linguist-language=YAML
+*.sh linguist-language=Shell
