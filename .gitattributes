@@ -1,0 +1,9 @@
+# Hide Terraform from language stats
+**/*.tf linguist-vendored
+**/*.tfvars linguist-vendored
+terraform/** linguist-vendored
+
+# Highlight your core languages
+**/*.js linguist-language=JavaScript
+**/*.yaml linguist-language=YAML
+**/*.sh linguist-language=Shell
