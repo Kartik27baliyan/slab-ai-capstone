@@ -76,19 +76,5 @@ Next Goals:
  Add React frontend to Helm
  Configure Prometheus monitoring
 
-echo "\n## $(date +%Y-%m-%d)\n**New Insight**: ..." >> LEARNINGS.md
-git commit -am "Updated learnings"
-git push
 
-Key Improvements:
-Actionable Checklists: Structured learning paths
-Project Context: Links theory to your actual work
-Interview Ready: Pre-framed answers
-Evolvable: Easy to add new sections
-Want to:
-
-Add screenshots of your cluster?
-Include architecture diagrams?
-Build a quiz section?
-This version grows with constant progress and knowledge! 🌱
 
