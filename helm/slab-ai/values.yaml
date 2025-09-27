@@ -79,3 +79,12 @@ httpRoute:
     - name: gateway
   hostnames:
     - chart-example.local
+
+    # Save this as mongodb-values.yaml
+resources:
+  requests:
+    cpu: 100m   # Start with a conservative request
+    memory: 256Mi
+  limits:
+    cpu: 500m   # Set a limit to prevent the DB from consuming all node resources
+    memory: 1Gi
