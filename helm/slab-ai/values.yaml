@@ -71,3 +71,11 @@ volumeMounts: []
 nodeSelector: {}
 tolerations: []
 affinity: {}
+
+httpRoute:
+  enabled: false  # Set to true only if you are using Gateway API
+  annotations: {}
+  parentRefs:
+    - name: gateway
+  hostnames:
+    - chart-example.local
