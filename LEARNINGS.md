@@ -76,5 +76,21 @@ Next Goals:
  Add React frontend to Helm
  Configure Prometheus monitoring
 
+ ## 🎯 **CRITICAL BREAKTHROUGHS - 2025-09-28**
+
+### **The Great MongoDB Connection Battle (48+ Hours Resolved)**
+
+**Problem**: Backend pods in CrashLoopBackOff due to MongoDB connection failures
+**Root Cause**: Mixed configurations and missing MongoDB service
+
+**Key Learnings:**
+
+1. **Helm Architecture Separation**
+   ```bash
+   # WRONG: Mixed backend + DB in one values.yaml
+   # RIGHT: Separate deployments
+   helm install mongodb bitnami/mongodb -n slab-ai -f mongodb-values.yaml
+   helm install slab-ai-backend ./helm/slab-ai -n slab-ai
+
 
 
