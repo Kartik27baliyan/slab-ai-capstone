@@ -37,11 +37,14 @@ livenessProbe:
   httpGet:
     path: /
     port: 80
-  initialDelaySeconds: 15  # Critical for slow-starting containers
+  initialDelaySeconds: 15  
+  
+# Critical for slow-starting containers
 🌐 ENVIRONMENT ACCESS
 Component	Dev (Local)	Prod (K8s)
 Frontend	localhost:5173	localhost:8080
 Backend	Proxy to :8082	localhost:8082
+
 🚨 GOTCHAS & SOLUTIONS
 "Port already in use"
 → Run kubectl port-forward in separate terminals or background with &
