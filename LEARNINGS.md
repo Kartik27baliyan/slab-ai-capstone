@@ -156,22 +156,29 @@ Backend	Proxy to :8082	localhost:8082
 🚨 GOTCHAS & SOLUTIONS
 "Port already in use"
 → Run kubectl port-forward in separate terminals or background with &
-
 Helm "invalid ownership" errors
 → Always clean old releases:
-
-Bash
 
 helm uninstall slab-ai-backend -n slab-ai
 kubectl delete svc,deploy -n slab-ai -l app.kubernetes.io/instance=slab-ai-backend
 🎯 NEXT STEPS
 Configure Ingress:
-Bash
 
 kubectl apply -f helm/slab-ai/templates/ingress.yaml
 Set up CI/CD (GitHub Actions example):
 YAML
-
 - name: Deploy to K8s
   run: |
     helm upgrade slab-ai ./helm/slab-ai -n slab-ai
+    
+🎓 KEY LEARNING POINTS:-
+Helm Dependencies: Templates MUST match values.yaml structure
+Kubernetes Networking: Services need correct selectors and ports
+Environment Variables: Critical for app configuration
+Debugging Methodology: One command at a time approach
+Port Management: Avoiding conflicts in local development
+🗣️ DEMONSTRATION SCRIPT
+When you to demonstrate:
+Show kubectl get all -n slab-ai - all services running
+Open browser to http://localhost:8081 - frontend working
+Show curl http://localhost:8083/api/healthcheck - backend + MongoDB connected
