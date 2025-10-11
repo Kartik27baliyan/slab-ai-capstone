@@ -4,6 +4,8 @@ SLAB.AI is a full-stack AI application deployed on Kubernetes with Helm, featuri
 
 
 🏗️ Architecture
+
+
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Frontend      │    │    Backend API   │    │   MongoDB       │
 │  (React)        │◄──►│   (Node.js)      │◄──►│  (Database)     │
