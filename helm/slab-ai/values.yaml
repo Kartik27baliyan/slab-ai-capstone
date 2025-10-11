@@ -1,37 +1,37 @@
 replicaCount: 1
 
 image:
-  repository: slab-backend  # ✅ Your backend image
+  repository: slab-backend
   pullPolicy: IfNotPresent
-  tag: "prod"  # ✅ Specific tag
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-serviceAccount:
-  create: true
-  automount: true
-  annotations: {}
-  name: ""
-
-podAnnotations: {}
-podLabels: {}
-
-podSecurityContext: {}
-
-securityContext: {}
-
-# MongoDB connection configuration
-mongodb:
-  uri: "mongodb://mongodb.slab-ai.svc.cluster.local:27017"  # ✅ Added MongoDB URI
+  tag: "prod"
 
 service:
   type: ClusterIP
-  port: 3000  # ✅ Changed to match backend port
+  port: 3000
 
+# Service Account configuration
+serviceAccount:
+  create: true
+  automount: true
+
+# Frontend configuration
+frontend:
+  enabled: true
+  image:
+    repository: slab-ai-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+
+# MongoDB configuration
+mongodb:
+  enabled: true
+
+# Ingress configuration
 ingress:
-  enabled: true  # ✅ Enable ingress
+  enabled: false
   className: ""
   annotations: {}
   hosts:
@@ -41,6 +41,10 @@ ingress:
           pathType: ImplementationSpecific
   tls: []
 
+# HTTP Route configuration (Gateway API)
+httpRoute:
+  enabled: false
+
 resources:
   limits:
     cpu: 500m
@@ -49,16 +53,15 @@ resources:
     cpu: 200m
     memory: 128Mi
 
-# Health checks on correct port
 livenessProbe:
   httpGet:
-    path: /health  # ✅ Changed to health endpoint
-    port: 3000     # ✅ Correct port
+    path: /api/healthcheck
+    port: 3000
 
 readinessProbe:
   httpGet:
-    path: /health  # ✅ Changed to health endpoint  
-    port: 3000     # ✅ Correct port
+    path: /api/healthcheck
+    port: 3000
 
 autoscaling:
   enabled: false
@@ -72,19 +75,3 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 
-httpRoute:
-  enabled: false  # Set to true only if you are using Gateway API
-  annotations: {}
-  parentRefs:
-    - name: gateway
-  hostnames:
-    - chart-example.local
-
-    # Save this as mongodb-values.yaml
-resources:
-  requests:
-    cpu: 100m   # Start with a conservative request
-    memory: 256Mi
-  limits:
-    cpu: 500m   # Set a limit to prevent the DB from consuming all node resources
-    memory: 1Gi

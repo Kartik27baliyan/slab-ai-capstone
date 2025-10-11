@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "slab-ai-chart.fullname" . }}-mongodb
+  labels:
+    {{- include "slab-ai-chart.labels" . | nindent 4 }}
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+      {{- include "slab-ai-chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: mongodb
+        {{- include "slab-ai-chart.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:6.0
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+      volumes:
+      - name: mongodb-data
+        persistentVolumeClaim:
+          claimName: {{ include "slab-ai-chart.fullname" . }}-mongodb-pvc
