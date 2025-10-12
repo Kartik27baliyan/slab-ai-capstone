@@ -9,12 +9,10 @@ service:
   type: ClusterIP
   port: 3000
 
-# Service Account configuration
 serviceAccount:
   create: true
   automount: true
 
-# Frontend configuration
 frontend:
   enabled: true
   image:
@@ -25,25 +23,26 @@ frontend:
     type: ClusterIP
     port: 80
 
-# MongoDB configuration
 mongodb:
   enabled: true
 
-# Ingress configuration
+# Secrets Configuration
+secrets:
+  mongodb:
+    uri: "mongodb://slab-ai-slab-ai-chart-mongodb:27017/slabai"
+  nodeEnv: "production"
+
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
+  enabled: true
+  className: "nginx"
   hosts:
-    - host: chart-example.local
+    - host: slab-ai.local
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
+        - path: /api
+          pathType: Prefix
   tls: []
-
-# HTTP Route configuration (Gateway API)
-httpRoute:
-  enabled: false
 
 resources:
   limits:
@@ -75,3 +74,6 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 
+# HTTP Route configuration (Gateway API)
+httpRoute:
+  enabled: false
