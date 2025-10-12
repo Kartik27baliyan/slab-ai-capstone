@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"  # ← FIX: Disable redirect
     cert-manager.io/issuer: {{ include "slab-ai-chart.fullname" . }}-selfsigned
 spec:
   ingressClassName: nginx
