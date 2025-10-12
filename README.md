@@ -64,6 +64,19 @@ Problem: Pods crash repeatedly
 # Check logs
 kubectl logs -n slab-ai <pod-name> --previous
 
+# 🚀 SLAB.AI - Production Kubernetes Deployment
+
+## 📊 Status: **PRODUCTION READY** ✅
+
+A full-stack EdTech platform deployed on Kubernetes with enterprise-grade infrastructure.
+
+## 🌐 Live Access
+- **Frontend**: https://slab-ai.local
+- **Backend API**: https://slab-ai.local/api
+- **Monitoring**: http://localhost:3000 (Grafana)
+
+## 🏗️ Architecture
+
 📜 License
 MIT © 2023 [Kartik27baliyan]
  
