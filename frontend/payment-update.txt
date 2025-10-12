@@ -1,0 +1,49 @@
+// Replace the payment section in src/App.jsx with this:
+
+{/* Secure Payment Integration */}
+<div className="payment-section">
+  <h3>💳 Secure Payment Processing</h3>
+  <div className="payment-features">
+    <div className="payment-badge">
+      <div className="badge-icon">🔒</div>
+      <span>PCI DSS Compliant</span>
+    </div>
+    <div className="payment-badge">
+      <div className="badge-icon">🛡️</div>
+      <span>3D Secure Authentication</span>
+    </div>
+    <div className="payment-badge">
+      <div className="badge-icon">⚡</div>
+      <span>Instant Payment Processing</span>
+    </div>
+  </div>
+  
+  <div className="payment-demo">
+    <div className="payment-card">
+      <div className="card-header">
+        <span>Credit/Debit Card</span>
+        <div className="card-icons">💳 🏦</div>
+      </div>
+      <div className="card-inputs">
+        <div className="input-row">
+          <input type="text" placeholder="Card Number" readOnly />
+        </div>
+        <div className="input-row">
+          <input type="text" placeholder="MM/YY" readOnly />
+          <input type="text" placeholder="CVV" readOnly />
+        </div>
+        <button className="pay-button">Pay ₹15,000</button>
+      </div>
+    </div>
+    
+    <div className="payment-options">
+      <div className="option">📱 UPI Payment</div>
+      <div className="option">🏦 Net Banking</div>
+      <div className="option">💰 Wallet</div>
+    </div>
+  </div>
+  
+  <p className="security-note">
+    <small>All payments are securely processed through Razorpay. Your financial data is encrypted and never stored on our servers.</small>
+  </p>
+</div>
