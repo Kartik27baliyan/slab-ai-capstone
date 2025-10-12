@@ -76,6 +76,31 @@ A full-stack EdTech platform deployed on Kubernetes with enterprise-grade infras
 - **Monitoring**: http://localhost:3000 (Grafana)
 
 ## 🏗️ Architecture
+Presentation → Ingress → Services → Pods
+(React) (Nginx) (ClusterIP) (Containers)
+
+## 🔧 Production Features
+- ✅ **Kubernetes Orchestration** with Helm
+- ✅ **HTTPS/SSL Encryption** with cert-manager  
+- ✅ **Secrets Management** (encrypted credentials)
+- ✅ **Monitoring Stack** (Prometheus + Grafana)
+- ✅ **CI/CD Pipeline** (GitHub Actions)
+- ✅ **Load Balancing** (Ingress Controller)
+- ✅ **Persistent Storage** (MongoDB)
+
+## 🚀 Quick Start
+# Health check
+curl -k -H "Host: slab-ai.local" https://localhost/api/healthcheck
+# Access monitoring
+kubectl -n monitoring port-forward svc/monitoring-grafana 3000:80
+
+📁 Project Structure
+slab-ai-capstone/
+├── backend/          # Node.js API
+├── frontend/         # React Application
+├── helm/slab-ai/     # Production Helm Charts
+└── .github/workflows # CI/CD Automation
+Deployment completed: $(12/10/2025)
 
 📜 License
 MIT © 2023 [Kartik27baliyan]
