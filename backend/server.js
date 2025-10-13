@@ -39,3 +39,22 @@ app.get('/health', (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`🌐 Server running on http://localhost:${PORT}`));
+
+// Import course routes
+const courseRoutes = require('./controllers/coursesController');
+
+// Course Management Routes
+app.post('/api/courses', courseRoutes.createCourse);
+app.get('/api/courses', courseRoutes.getCourses);
+app.get('/api/courses/:id', courseRoutes.getCourse);
+app.put('/api/courses/:id', courseRoutes.updateCourse);
+app.get('/api/courses/analytics', courseRoutes.getCourseAnalytics);
+
+// Import enrollment routes
+const enrollmentRoutes = require('./controllers/enrollmentsController');
+
+// Enrollment Management Routes
+app.post('/api/enrollments', enrollmentRoutes.createEnrollment);
+app.get('/api/enrollments/student/:studentId', enrollmentRoutes.getStudentEnrollments);
+app.put('/api/enrollments/:enrollmentId/progress', enrollmentRoutes.updateProgress);
+app.get('/api/enrollments/analytics', enrollmentRoutes.getEnrollmentAnalytics);
