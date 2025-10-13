@@ -42,6 +42,9 @@ ingress:
           pathType: Prefix
         - path: /api
           pathType: Prefix
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
   tls: []
 
 resources:
@@ -54,32 +57,14 @@ resources:
 
 livenessProbe:
   httpGet:
-    path: /api/healthcheck
+    path: /health
     port: 3000
+  initialDelaySeconds: 30
+  periodSeconds: 10
 
 readinessProbe:
   httpGet:
-    path: /api/healthcheck
+    path: /health
     port: 3000
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-
-volumes: []
-volumeMounts: []
-nodeSelector: {}
-tolerations: []
-affinity: {}
-
-# HTTP Route configuration (Gateway API)
-httpRoute:
-  enabled: false
-
-# Fixed ingress annotations for API routing
-ingress:
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/use-regex: "true"
+  initialDelaySeconds: 5
+  periodSeconds: 5
