@@ -30,15 +30,32 @@ kubectl port-forward svc/mongodb 27017:27017 -n slab-ai &
 Backend Healthcheck: http://localhost:8080/api/healthcheck
 MongoDB: mongodb://admin:admin123@localhost:27017/slabai
 
-🛠️ Project Structure
+🛠️ 📁 Project Structure
 slab-ai-capstone/
-├── backend/            # Node.js server
-│   ├── Dockerfile      # Dev image
-│   ├── Dockerfile.prod # Optimized production image
-│   └── server.js       # Main app
-├── helm/               # Kubernetes templates
-├── terraform/          # Cloud infrastructure
-└── README.md           # This file
+├── backend/          # Node.js API
+├── frontend/         # React Application
+├── helm/slab-ai/     # Production Helm Charts
+└── .github/workflows # CI/CD Automation
+🎯 BUSINESS DOMAINS:
+├── 📈 Lead Management (Marketing)
+│   ├── Capture student interest
+│   ├── Campaign tracking
+│   └── Conversion analytics
+├── 📚 Course Management (Product)  
+│   ├── Course catalog
+│   ├── Module-based content
+│   └── Instructor management
+└── 🎓 Enrollment System (Learning)
+    ├── Student registration
+    ├── Progress tracking
+    └── Completion analytics
+
+🚀 TECHNICAL STACK:
+├── Frontend: React 19 + Vite
+├── Backend: Node.js + Express
+├── Database: MongoDB + Mongoose
+├── Infrastructure: Kubernetes + Helm
+└── Deployment: Docker + Minikube
 
 💡 Key Features
 ✅ Local Kubernetes
@@ -94,12 +111,6 @@ curl -k -H "Host: slab-ai.local" https://localhost/api/healthcheck
 # Access monitoring
 kubectl -n monitoring port-forward svc/monitoring-grafana 3000:80
 
-📁 Project Structure
-slab-ai-capstone/
-├── backend/          # Node.js API
-├── frontend/         # React Application
-├── helm/slab-ai/     # Production Helm Charts
-└── .github/workflows # CI/CD Automation
 Deployment completed: $(12/10/2025)
 
 📜 License
